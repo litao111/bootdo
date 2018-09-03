@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.business.dao.BusinessInfoDao">
+
+	<select id="get" resultType="com.bootdo.business.domain.BusinessInfoDO">
+		select `id`,`name`,`boss_name`,`boss_phone`,`address`,`city`,`country`,`street`,`detail`,`desks`,`consume_level`,`numbers_level`,`left_desks`,`publish_desks`,`create_time`,`start_time`,`end_time`,`type`,`address_type`,`status`,`price`,`header_img`,`update_time` from t_business_info where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.business.domain.BusinessInfoDO">
+		select `id`,`name`,`boss_name`,`boss_phone`,`address`,`city`,`country`,`street`,`detail`,`desks`,`consume_level`,`numbers_level`,`left_desks`,`publish_desks`,`create_time`,`start_time`,`end_time`,`type`,`address_type`,`status`,`price`,`header_img`,`update_time` from t_business_info
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="bossName != null and bossName != ''"> and boss_name = #{bossName} </if>
+		  		  <if test="bossPhone != null and bossPhone != ''"> and boss_phone = #{bossPhone} </if>
+		  		  <if test="address != null and address != ''"> and address = #{address} </if>
+		  		  <if test="city != null and city != ''"> and city = #{city} </if>
+		  		  <if test="country != null and country != ''"> and country = #{country} </if>
+		  		  <if test="street != null and street != ''"> and street = #{street} </if>
+		  		  <if test="detail != null and detail != ''"> and detail = #{detail} </if>
+		  		  <if test="desks != null and desks != ''"> and desks = #{desks} </if>
+		  		  <if test="consumeLevel != null and consumeLevel != ''"> and consume_level = #{consumeLevel} </if>
+		  		  <if test="numbersLevel != null and numbersLevel != ''"> and numbers_level = #{numbersLevel} </if>
+		  		  <if test="leftDesks != null and leftDesks != ''"> and left_desks = #{leftDesks} </if>
+		  		  <if test="publishDesks != null and publishDesks != ''"> and publish_desks = #{publishDesks} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="startTime != null and startTime != ''"> and start_time = #{startTime} </if>
+		  		  <if test="endTime != null and endTime != ''"> and end_time = #{endTime} </if>
+		  		  <if test="type != null and type != ''"> and type = #{type} </if>
+		  		  <if test="addressType != null and addressType != ''"> and address_type = #{addressType} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="price != null and price != ''"> and price = #{price} </if>
+		  		  <if test="headerImg != null and headerImg != ''"> and header_img = #{headerImg} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from t_business_info
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="bossName != null and bossName != ''"> and boss_name = #{bossName} </if>
+		  		  <if test="bossPhone != null and bossPhone != ''"> and boss_phone = #{bossPhone} </if>
+		  		  <if test="address != null and address != ''"> and address = #{address} </if>
+		  		  <if test="city != null and city != ''"> and city = #{city} </if>
+		  		  <if test="country != null and country != ''"> and country = #{country} </if>
+		  		  <if test="street != null and street != ''"> and street = #{street} </if>
+		  		  <if test="detail != null and detail != ''"> and detail = #{detail} </if>
+		  		  <if test="desks != null and desks != ''"> and desks = #{desks} </if>
+		  		  <if test="consumeLevel != null and consumeLevel != ''"> and consume_level = #{consumeLevel} </if>
+		  		  <if test="numbersLevel != null and numbersLevel != ''"> and numbers_level = #{numbersLevel} </if>
+		  		  <if test="leftDesks != null and leftDesks != ''"> and left_desks = #{leftDesks} </if>
+		  		  <if test="publishDesks != null and publishDesks != ''"> and publish_desks = #{publishDesks} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="startTime != null and startTime != ''"> and start_time = #{startTime} </if>
+		  		  <if test="endTime != null and endTime != ''"> and end_time = #{endTime} </if>
+		  		  <if test="type != null and type != ''"> and type = #{type} </if>
+		  		  <if test="addressType != null and addressType != ''"> and address_type = #{addressType} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="price != null and price != ''"> and price = #{price} </if>
+		  		  <if test="headerImg != null and headerImg != ''"> and header_img = #{headerImg} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.business.domain.BusinessInfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into t_business_info
+		(
+			`name`, 
+			`boss_name`, 
+			`boss_phone`, 
+			`address`, 
+			`city`, 
+			`country`, 
+			`street`, 
+			`detail`, 
+			`desks`, 
+			`consume_level`, 
+			`numbers_level`, 
+			`left_desks`, 
+			`publish_desks`, 
+			`create_time`, 
+			`start_time`, 
+			`end_time`, 
+			`type`, 
+			`address_type`, 
+			`status`, 
+			`price`, 
+			`header_img`, 
+			`update_time`
+		)
+		values
+		(
+			#{name}, 
+			#{bossName}, 
+			#{bossPhone}, 
+			#{address}, 
+			#{city}, 
+			#{country}, 
+			#{street}, 
+			#{detail}, 
+			#{desks}, 
+			#{consumeLevel}, 
+			#{numbersLevel}, 
+			#{leftDesks}, 
+			#{publishDesks}, 
+			#{createTime}, 
+			#{startTime}, 
+			#{endTime}, 
+			#{type}, 
+			#{addressType}, 
+			#{status}, 
+			#{price}, 
+			#{headerImg}, 
+			#{updateTime}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.business.domain.BusinessInfoDO">
+		update t_business_info 
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="bossName != null">`boss_name` = #{bossName}, </if>
+			<if test="bossPhone != null">`boss_phone` = #{bossPhone}, </if>
+			<if test="address != null">`address` = #{address}, </if>
+			<if test="city != null">`city` = #{city}, </if>
+			<if test="country != null">`country` = #{country}, </if>
+			<if test="street != null">`street` = #{street}, </if>
+			<if test="detail != null">`detail` = #{detail}, </if>
+			<if test="desks != null">`desks` = #{desks}, </if>
+			<if test="consumeLevel != null">`consume_level` = #{consumeLevel}, </if>
+			<if test="numbersLevel != null">`numbers_level` = #{numbersLevel}, </if>
+			<if test="leftDesks != null">`left_desks` = #{leftDesks}, </if>
+			<if test="publishDesks != null">`publish_desks` = #{publishDesks}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="startTime != null">`start_time` = #{startTime}, </if>
+			<if test="endTime != null">`end_time` = #{endTime}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="addressType != null">`address_type` = #{addressType}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="price != null">`price` = #{price}, </if>
+			<if test="headerImg != null">`header_img` = #{headerImg}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from t_business_info where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from t_business_info where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

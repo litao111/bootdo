@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link href="/css/plugins/datapicker/datepicker3.css" rel="stylesheet" media="screen">
+<head th:include="include :: header">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" th:value="${businessInfo.id}" type="hidden">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">店名：</label>
+                            <div class="col-sm-8">
+                                <input id="name" name="name" th:value="${businessInfo.name}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">老板名字：</label>
+                            <div class="col-sm-8">
+                                <input id="bossName" name="bossName" th:value="${businessInfo.bossName}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">老板电话：</label>
+                            <div class="col-sm-8">
+                                <input id="bossPhone" name="bossPhone" th:value="${businessInfo.bossPhone}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地址全称：</label>
+                            <div class="col-sm-8">
+                                <input id="address" name="address" th:value="${businessInfo.address}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">城市：</label>
+                            <div class="col-sm-8">
+                                <input id="city" name="city" th:value="${businessInfo.city}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">区：</label>
+                            <div class="col-sm-8">
+                                <input id="country" name="country" th:value="${businessInfo.country}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">街道：</label>
+                            <div class="col-sm-8">
+                                <input id="street" name="street" th:value="${businessInfo.street}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">详细地址：</label>
+                            <div class="col-sm-8">
+                                <input id="detail" name="detail" th:value="${businessInfo.detail}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">桌数：</label>
+                            <div class="col-sm-8">
+                                <input id="desks" name="desks" th:value="${businessInfo.desks}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">消费等级：</label><!--0：一般1：中等2：高档：-->
+                            <div class="col-sm-8">
+                                <select id="consumeLevel" name="consumeLevel"
+                                        class="chosen-select form-control"></select>
+                            </div>
+                            <input id="_consumeLevel" th:value="${businessInfo.consumeLevel}" hidden>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">流量等级：</label><!--0：一般1：中等2：较多3：很多：-->
+                            <div class="col-sm-8">
+                                <select id="numbersLevel" name="numbersLevel" class="chosen-select form-control" type="text"></select>
+                            </div>
+                            <input id="_numbersLevel" th:value="${businessInfo.numbersLevel}" hidden>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">剩余桌数：</label>
+                            <div class="col-sm-8">
+                                <input id="leftDesks" name="leftDesks" th:value="${businessInfo.leftDesks}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">已发布广告桌位数：</label>
+                            <div class="col-sm-8">
+                                <input id="publishDesks" name="publishDesks" th:value="${businessInfo.publishDesks}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                             <label class="col-sm-3 control-label">创建时间：</label>
+                             <div class="col-sm-8">
+                                 <input id="createTime" name="createTime" th:value="${businessInfo.createTime}"
+                                        class="form-control" type="text">
+                             </div>
+                         </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">合同开始时间：</label>
+                            <div class="col-sm-8">
+                                <input id="startTime" name="startTime"
+                                       th:value="${#dates.format(businessInfo.startTime,'yyyy-MM-dd')}"
+                                       class="form-control selectData" type="text"><!--HH:mm:ss-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">合同终止时间：</label>
+                            <div class="col-sm-8">
+                                <input id="endTime" name="endTime"
+                                       th:value="${#dates.format(businessInfo.endTime,'yyyy-MM-dd')}"
+                                       class="form-control selectData" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">店的类型描述：</label>
+                            <div class="col-sm-8">
+                                <input id="type" name="type" th:value="${businessInfo.type}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地理位置描述：</label>
+                            <!--：商务2：小学3：中学4：大学5：CBD6：旅游景点7：居民社区：-->
+                            <div class="col-sm-8">
+                                <select id="addressType" name="addressType" class="chosen-select form-control" type="text"></select>
+                            </div>
+                            <input id="_addressType" th:value="${businessInfo.addressType}" hidden>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态：</label><!--0：正常-1：删除：-->
+                            <div class="col-sm-8">
+                                <input id="status" name="status" th:value="${businessInfo.status}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">单价：</label><!--价格/桌/天：-->
+                            <div class="col-sm-8">
+                                <input id="price" name="price" th:value="${businessInfo.price}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">门店的图片：</label>
+                            <div class="col-sm-8">
+                                <input id="headerImg" name="headerImg" th:value="${businessInfo.headerImg}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">更新时间：</label>
+                            <div class="col-sm-8">
+                                <input id="updateTime" name="updateTime" th:value="${businessInfo.updateTime}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="/js/commonUtils.js"></script>
+<script type="text/javascript" src="/js/appjs/business/businessInfo/edit.js"></script>
+</body>
+</html>

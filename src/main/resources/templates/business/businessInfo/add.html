@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link href="/css/plugins/datapicker/datepicker3.css" rel="stylesheet" media="screen">
+<link href="/css/plugins/chosen/chosen.css" rel="stylesheet" media="screen">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">店名：</label>
+                            <div class="col-sm-8">
+                                <input id="name" name="name" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">老板名字：</label>
+                            <div class="col-sm-8">
+                                <input id="bossName" name="bossName" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">老板电话：</label>
+                            <div class="col-sm-8">
+                                <input id="bossPhone" name="bossPhone" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地址全称：</label>
+                            <div class="col-sm-8">
+                                <input id="address" name="address" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">城市：</label>
+                            <div class="col-sm-8">
+                                <input id="city" name="city" class="form-control" type="text">
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">区：</label>
+                            <div class="col-sm-8">
+                                <input id="country" name="country" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">街道：</label>
+                            <div class="col-sm-8">
+                                <input id="street" name="street" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <!--<div class="gg-formGroup">-->
+                            <!--<div class="gg-formTitle">-->
+                                <!--<em class="gg-star">*</em>-->
+                                <!--<span>居住地:</span>-->
+                            <!--</div>-->
+                            <!--<div class="gg-formDetail gg-font0" data-toggle="distpicker">-->
+                                <!--<div class="gg-area">-->
+                                    <!--<select class="form-control" id="province" name="province">-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="gg-area">-->
+                                    <!--<select class="form-control" id="city" name="city">-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="gg-area">-->
+                                    <!--<select class="form-control" id="district" name="district">-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">详细地址：</label>
+                            <div class="col-sm-8">
+                                <input id="detail" name="detail" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">桌数：</label>
+                            <div class="col-sm-8">
+                                <input id="desks" name="desks" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">消费等级：</label>
+                            <div class="col-sm-8">
+                                <select id="consumeLevel" name="consumeLevel" class="chosen-select form-control">
+                                    <option label='请选择消费等级'></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">流量等级：</label>
+                            <div class="col-sm-8">
+                                <!--<input id="numbersLevel" name="numbersLevel" class="form-control" type="text">-->
+                                <select id="numbersLevel" name="numbersLevel" class="chosen-select form-control">
+                                    <option label='请选择流量等级'></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">剩余桌数：</label>
+                            <div class="col-sm-8">
+                                <input id="leftDesks" name="leftDesks" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">已发布广告桌位数：</label>
+                            <div class="col-sm-8">
+                                <input id="publishDesks" name="publishDesks" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">创建时间：</label>
+                            <div class="col-sm-8">
+                                <input id="createTime" name="createTime" class="form-control" type="text">
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">合同开始时间：</label>
+                            <div class="col-sm-8">
+                                <input id="startTime" name="startTime" class="form-control selectData" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">合同终止时间：</label>
+                            <div class="col-sm-8">
+                                <input id="endTime" name="endTime" class="form-control selectData" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">店的类型描述：</label>
+                            <div class="col-sm-8">
+                                <input id="type" name="type" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地理位置描述：</label>
+                            <div class="col-sm-8">
+                                <!--<input id="addressType" name="addressType" class="form-control" type="text">-->
+                                <select id="addressType" name="addressType" class="chosen-select form-control">
+                                    <option label='请选择流量等级'></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态：</label>
+                            <div class="col-sm-8">
+                                <input id="status" name="status" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">单价：</label>
+                            <div class="col-sm-8">
+                                <input id="price" name="price" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">门店的图片：</label>
+                            <div class="col-sm-8">
+                                <input id="headerImg" name="headerImgFile" class="form-control" type="file">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">更新时间：</label>
+                            <div class="col-sm-8">
+                                <input id="updateTime" name="updateTime" class="form-control" type="text">
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="/js/commonUtils.js"></script>
+<!--<script src="/js/demo/form-advanced-demo.js"></script>-->
+<script type="text/javascript" src="/js/appjs/business/businessInfo/add.js">
+</script>
+</body>
+</html>
